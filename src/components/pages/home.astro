@@ -4,6 +4,8 @@ import FormattedDate from '../FormattedDate.astro';
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import UpcomingEvents from '../UpcomingEvents.astro';
+import { extractSlugFromPath } from '../../utils/contents';
+import { getRelativeLocaleUrl } from 'astro:i18n';
 
 interface Props {
   title: string;
@@ -58,7 +60,10 @@ const posts = (await getCollection('blog'))
 
                   <div class="space-y-2">
                     <a
-                      href={`/blog/${post.slug}/`}
+                      href={getRelativeLocaleUrl(
+                        currentLocale,
+                        `/blog/${extractSlugFromPath(post.slug)}/`
+                      )}
                       class="text-white hover:text-primary-hover transition"
                     >
                       <h3>{post.data.title}</h3>

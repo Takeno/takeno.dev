@@ -21,18 +21,18 @@ if (translationUrl === undefined) {
 >
   {
     untranslated ? (
-      <p>
+      <p class="m-0 text-sm">
         {currentLocale === 'en'
           ? "This article is only available in Italian. We're working on the translation."
           : 'Questo articolo è disponibile solo in inglese. Stiamo lavorando alla traduzione.'}
       </p>
     ) : (
-      <p>
+      <p class="m-0 text-sm">
         {currentLocale === 'en'
-          ? `This article is also available in Italian. `
-          : `Questo articolo è disponibile anche in inglese. `}
+          ? `This article is also available in Italian, `
+          : `Questo articolo è disponibile anche in inglese, `}
         <a href={translationUrl} class="underline hover:text-white">
-          {currentLocale === 'en' ? 'Read it here' : 'Leggilo qui'}
+          {currentLocale === 'en' ? 'read it here' : 'leggilo qui'}
         </a>
       </p>
     )

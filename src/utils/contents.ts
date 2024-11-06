@@ -1,7 +1,3 @@
-import { getCollection } from 'astro:content';
-
-export async function getPosts() {
-  const posts = await getCollection('blog');
-
-  return posts;
+export function extractSlugFromPath(path: string) {
+  return path.split('/').pop();
 }

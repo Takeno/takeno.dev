@@ -3,6 +3,7 @@ import { getEntry, type CollectionEntry } from 'astro:content';
 import FormattedDate from '../FormattedDate.astro';
 import Layout from '../../layouts/Layout.astro';
 import TranslationInfo from '../TranslationInfo.astro';
+import { extractSlugFromPath } from '../../utils/contents';
 
 interface Props {
   post: CollectionEntry<'blog'>;
@@ -18,14 +19,14 @@ if (alternateLang === undefined) {
 }
 
 const alternateUrls = {
-  [post.data.lang]: `/${post.data.lang}/blog/${post.slug}/`,
+  [post.data.lang]: `/${post.data.lang}/blog/${extractSlugFromPath(post.slug)}/`,
 };
 
 if (alternateLang.data.untranslated === false) {
   alternateUrls[alternateLang.data.lang] =
     alternateLang.data.lang === 'it'
-      ? `/blog/${alternateLang.slug}/`
-      : `/${alternateLang.data.lang}/blog/${alternateLang.slug}/`;
+      ? `/blog/${extractSlugFromPath(alternateLang.slug)}/`
+      : `/${alternateLang.data.lang}/blog/${extractSlugFromPath(alternateLang.slug)}/`;
 }
 
 if (post.data.untranslated) {
@@ -44,7 +45,7 @@ if (post.data.untranslated) {
         {post.data.title}
       </h1>
 
-      <p class="text-xl text-gray-300">
+      <p class="text-2xl text-gray-300">
         {post.data.description}
       </p>
 

@@ -4,6 +4,7 @@ import Layout from '../../layouts/Layout.astro';
 import FormattedDate from '../FormattedDate.astro';
 import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
+import { extractSlugFromPath } from '../../utils/contents';
 
 interface Props {
   posts: CollectionEntry<'blog'>[];
@@ -57,7 +58,10 @@ const translations = {
           </p>
           <div>
             <a
-              href={getRelativeLocaleUrl(currentLocale, `/blog/${featuredPost.slug}/`)}
+              href={getRelativeLocaleUrl(
+                currentLocale,
+                `/blog/${extractSlugFromPath(featuredPost.slug)}/`
+              )}
               class="inline-flex items-center text-primary hover:text-primary-hover transition"
             >
               {translations.readMore}
@@ -87,7 +91,7 @@ const translations = {
               <p class="text-gray-300">{post.data.description}</p>
               <div>
                 <a
-                  href={`/blog/${post.slug}/`}
+                  href={`/blog/${extractSlugFromPath(post.slug)}/`}
                   class="inline-flex items-center text-primary hover:text-primary-hover transition"
                 >
                   Leggi articolo
