@@ -1,0 +1,109 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import Layout from '../../layouts/Layout.astro';
+import FormattedDate from '../FormattedDate.astro';
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  posts: CollectionEntry<'blog'>[];
+  title?: string;
+}
+
+const { posts, title = 'Blog' } = Astro.props;
+const [featuredPost, ...otherPosts] = posts;
+
+const currentLocale = Astro.currentLocale || 'it';
+
+const translations = {
+  en: {
+    readMore: 'Read more',
+  },
+  it: {
+    readMore: 'Leggi articolo',
+  },
+}[currentLocale]!;
+---
+
+<Layout title={title}>
+  <div class="container mx-auto px-4 py-12">
+    <h1>Here I write about code, bugs, mistakes<br /> and a mix of them.</h1>
+
+    {/* Post in Evidenza */}
+    <div class="mb-16">
+      <article class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {
+          featuredPost.data.heroImage && (
+            <div class="relative aspect-video">
+              <Image
+                src={featuredPost.data.heroImage}
+                alt=""
+                width={800}
+                height={400}
+                class="rounded-lg object-cover w-full h-full"
+              />
+            </div>
+          )
+        }
+        <div class="space-y-4">
+          <div class="text-gray-400">
+            <FormattedDate date={featuredPost.data.pubDate} />
+          </div>
+          <h2 class="text-3xl font-bold text-white">
+            {featuredPost.data.title}
+          </h2>
+          <p class="text-gray-300 text-lg">
+            {featuredPost.data.description}
+          </p>
+          <div>
+            <a
+              href={getRelativeLocaleUrl(currentLocale, `/blog/${featuredPost.slug}/`)}
+              class="inline-flex items-center text-primary hover:text-primary-hover transition"
+            >
+              {translations.readMore}
+              <svg class="w-4 h-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  fill-rule="evenodd"
+                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                  clip-rule="evenodd"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    {/* Lista Altri Post */}
+    <div class="space-y-12">
+      {
+        otherPosts.map((post) => (
+          <article class="relative grid grid-cols-[120px_1fr] gap-6 items-start">
+            <div class="text-gray-400 text-sm">
+              <FormattedDate date={post.data.pubDate} />
+            </div>
+
+            <div class="space-y-2">
+              <h2 class="text-xl font-bold text-white">{post.data.title}</h2>
+              <p class="text-gray-300">{post.data.description}</p>
+              <div>
+                <a
+                  href={`/blog/${post.slug}/`}
+                  class="inline-flex items-center text-primary hover:text-primary-hover transition"
+                >
+                  Leggi articolo
+                  <svg class="w-4 h-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                    <path
+                      fill-rule="evenodd"
+                      d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</Layout>

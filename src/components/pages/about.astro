@@ -1,0 +1,28 @@
+---
+import Profile from '../Profile.astro';
+import Layout from '../../layouts/Layout.astro';
+import UpcomingEvents from '../UpcomingEvents.astro';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<Layout title={title} alternateUrls={{ en: '/en/about-me', it: '/about-me' }}>
+  <div class="container mx-auto px-4 py-12">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-x-24">
+      <div class="lg:col-span-8">
+        <div class="mb-12">
+          <slot />
+        </div>
+      </div>
+
+      <div class="lg:col-span-4">
+        <Profile />
+        <UpcomingEvents />
+      </div>
+    </div>
+  </div>
+</Layout>

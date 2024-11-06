@@ -1,0 +1,80 @@
+---
+import Profile from '../Profile.astro';
+import FormattedDate from '../FormattedDate.astro';
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import UpcomingEvents from '../UpcomingEvents.astro';
+
+interface Props {
+  title: string;
+  greeting: string;
+  subtitle: string;
+  bio: string;
+  currentTech: string;
+  recentPostsTitle: string;
+  upcomingTalksTitle: string;
+}
+
+const { title, greeting, subtitle, bio, currentTech, recentPostsTitle } = Astro.props;
+const currentLocale = Astro.currentLocale || 'it';
+
+const posts = (await getCollection('blog'))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .filter((post) => post.data.lang === currentLocale)
+  .slice(0, 3);
+---
+
+<Layout title={title} alternateUrls={{ en: '/en', it: '' }}>
+  <div class="container mx-auto px-4 py-12">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-x-24">
+      <div class="lg:col-span-8">
+        <div class="mb-12">
+          <h1>
+            {greeting}<br />
+            <small class="text-2xl md:text-4xl">{subtitle}</small>
+          </h1>
+          <p class="text-xl">
+            {bio}
+            <br />
+            {currentTech}
+          </p>
+        </div>
+      </div>
+
+      <div class="lg:col-span-4">
+        <Profile />
+      </div>
+
+      <div class="lg:col-span-8">
+        <div class="space-y-8">
+          <h2>{recentPostsTitle}</h2>
+          <ul class="space-y-8">
+            {
+              posts.map((post) => (
+                <li class="relative grid grid-cols-[120px_1fr] gap-6 items-start">
+                  <div class="text-sm">
+                    <FormattedDate date={post.data.pubDate} />
+                  </div>
+
+                  <div class="space-y-2">
+                    <a
+                      href={`/blog/${post.slug}/`}
+                      class="text-white hover:text-primary-hover transition"
+                    >
+                      <h3>{post.data.title}</h3>
+                    </a>
+                    <p>{post.data.description}</p>
+                  </div>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+
+      <div class="lg:col-span-4">
+        <UpcomingEvents />
+      </div>
+    </div>
+  </div>
+</Layout>

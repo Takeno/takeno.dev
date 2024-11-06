@@ -1,0 +1,77 @@
+/* Tipografia di base */
+body {
+  @apply text-gray-300 bg-gray-950;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
+
+/* Intestazioni */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply text-white font-bold;
+}
+
+h1 {
+  @apply text-4xl md:text-6xl mb-6;
+}
+
+h2 {
+  @apply text-3xl md:text-4xl mb-4;
+}
+
+h3 {
+  @apply text-2xl md:text-3xl mb-4;
+}
+
+h4 {
+  @apply text-xl md:text-2xl mb-3;
+}
+
+/* Link */
+a {
+  @apply text-primary hover:text-primary-hover transition-colors duration-200;
+}
+
+a h1,
+a h2,
+a h3,
+a h4,
+a h5,
+a h6 {
+  @apply text-white hover:text-primary-hover transition-colors duration-200;
+}
+
+/* Testo base */
+p {
+  @apply mb-4 leading-relaxed;
+}
+
+/* Liste */
+ul,
+ol {
+  @apply mb-4 pl-5;
+}
+
+ul {
+  @apply list-disc;
+}
+
+ol {
+  @apply list-decimal;
+}
+
+/* Codice inline */
+code:not([class*='language-']) {
+  @apply bg-gray-800 px-1.5 py-0.5 rounded text-purple-400 text-sm;
+}
+
+/* Citazioni */
+blockquote {
+  @apply border-l-4 border-primary pl-4 italic my-4;
+}

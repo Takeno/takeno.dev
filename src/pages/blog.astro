@@ -1,0 +1,12 @@
+---
+import { getCollection } from 'astro:content';
+import BlogComponent from '../components/pages/blog.astro';
+
+const posts = (
+  await getCollection('blog', ({ data }) => {
+    return data.lang === 'it';
+  })
+).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<BlogComponent posts={posts} />

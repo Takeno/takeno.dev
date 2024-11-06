@@ -1,0 +1,39 @@
+[
+  {
+    "id": "kyotojs-2024",
+    "event": "KyotoJS Meetup",
+    "eventLink": "https://kyotojs.connpass.com/event/311584/",
+    "location": "Kyoto, JP",
+    "date": "2024-03-13",
+    "speaker": true,
+    "talk": "React Native - Mobile apps in less than twelve parsecs",
+    "video": "https://www.youtube.com/watch?v=k1hLMKPtAwM"
+  },
+  {
+    "id": "coderful-2024",
+    "event": "Coderful #0",
+    "eventLink": "https://2024.coderful.io/",
+    "location": "Catania, IT",
+    "date": "2024-06-28",
+    "speaker": true,
+    "talk": "Smarmella! Apri tutto! E altre istruzioni per l'uso dei nuovi framework fullstack"
+  },
+  {
+    "id": "codemotion-milano-2024",
+    "event": "Codemotion Milano 2024",
+    "eventLink": "https://conferences.codemotion.com/milan2024/",
+    "location": "Milano, IT",
+    "date": "2024-10-22",
+    "speaker": true,
+    "talk": "What's wrong with modern fullstack frameworks"
+  },
+  {
+    "id": "reactjs-day-2024",
+    "event": "ReactJS Day 2024",
+    "eventLink": "https://2024.reactjsday.it/",
+    "location": "Verona, IT",
+    "date": "2024-10-25",
+    "speaker": true,
+    "talk": "Do Frontend Devs dream of Backend functions?"
+  }
+]

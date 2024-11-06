@@ -1,0 +1,40 @@
+---
+interface Props {
+  untranslated: boolean;
+  originalLang: string;
+  translationUrl: string | undefined;
+}
+
+const { untranslated, translationUrl } = Astro.props;
+const currentLocale = Astro.currentLocale;
+
+if (translationUrl === undefined) {
+  return null;
+}
+---
+
+<div
+  class:list={[
+    'p-4 rounded-lg mb-8',
+    untranslated ? 'bg-yellow-900/50 text-yellow-200' : 'bg-purple-900/50 text-purple-200',
+  ]}
+>
+  {
+    untranslated ? (
+      <p>
+        {currentLocale === 'en'
+          ? "This article is only available in Italian. We're working on the translation."
+          : 'Questo articolo è disponibile solo in inglese. Stiamo lavorando alla traduzione.'}
+      </p>
+    ) : (
+      <p>
+        {currentLocale === 'en'
+          ? `This article is also available in Italian. `
+          : `Questo articolo è disponibile anche in inglese. `}
+        <a href={translationUrl} class="underline hover:text-white">
+          {currentLocale === 'en' ? 'Read it here' : 'Leggilo qui'}
+        </a>
+      </p>
+    )
+  }
+</div>

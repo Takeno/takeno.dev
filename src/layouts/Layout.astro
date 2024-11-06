@@ -1,0 +1,33 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+
+interface Props {
+  title?: string;
+  alternateUrls?: {
+    [key: string]: string;
+  };
+}
+
+const { title = SITE_TITLE, alternateUrls = {} } = Astro.props;
+const currentLang = Astro.currentLocale || 'it';
+---
+
+<!doctype html>
+<html lang={currentLang}>
+  <head>
+    <BaseHead title={title} description={SITE_DESCRIPTION} />
+    {
+      Object.entries(alternateUrls).map(([lang, url]) => (
+        <link rel="alternate" hreflang={lang} href={new URL(url, Astro.site).toString()} />
+      ))
+    }
+  </head>
+  <body class="bg-gray-950 min-h-screen">
+    <Header />
+    <main>
+      <slot />
+    </main>
+  </body>
+</html>
