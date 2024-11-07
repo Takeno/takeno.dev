@@ -1,6 +1,6 @@
 ---
 title: Finally online!
-description: 'Here we go!'
+description: 'Blog deployed. Here we go!'
 pubDate: '2024-11-06'
 lang: en
 translationOf: '2024/11/finalmente-online'

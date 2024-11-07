@@ -2,12 +2,26 @@
 import Home from '../../components/pages/home.astro';
 ---
 
-<Home
-  title="My Blog"
-  greeting="I'm Matteo Manchi aka Takeno,"
-  subtitle="and I'm a web fullstack engineer."
-  bio="I play with code since 2006, when I started to code in PHP."
-  currentTech="Now I'm a fullstack web engineer, with focus on the frontend."
-  recentPostsTitle="Recent Posts"
-  upcomingTalksTitle="Upcoming Talks"
-/>
+<Home title="Matteo Manchi aka Takeno" recentPostsTitle="Latest posts">
+  <div class="mb-12">
+    <h1>
+      Code, sharing, fun
+      <!-- <small class="text-2xl md:text-4xl">{subtitle}</small> -->
+    </h1>
+    <p class="text-2xl">
+      Welcome! I'm Matteo aka Takeno and I'm a fullstack engineer, constantly experimenting.
+    </p>
+    <p>
+      I'm a tirelessly curious person and I like to delve deep into the technologies I use. In this
+      digital space, I share discoveries and experiences regarding web development in daily
+      practice, with a focus on in-depth exploration and dissemination. The goal is to maintain an
+      archive of knowledge where I put my technical experiences in all areas of full stack
+      development.
+    </p>
+    <p>
+      If you happen to meet me at a conference, a
+      <a href="https://romajs.org" target="_blank" rel="noopener noreferrer">RomaJS</a> meetup, or a
+      <em>Magic: The Gathering</em> tournament, don't hesitate to stop me and have a chat!
+    </p>
+  </div>
+</Home>

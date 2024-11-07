@@ -1,10 +1,12 @@
 /* Tipografia di base */
 body {
-  @apply text-gray-300 bg-gray-950;
+  @apply text-gray-300 min-h-screen;
   font-family:
     system-ui,
     -apple-system,
     sans-serif;
+
+  background: linear-gradient(45deg, rgba(149, 27, 129, 1) 0%, rgba(0, 159, 227, 1) 100%);
 }
 
 /* Intestazioni */

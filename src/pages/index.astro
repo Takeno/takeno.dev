@@ -2,12 +2,27 @@
 import Home from '../components/pages/home.astro';
 ---
 
-<Home
-  title="Il Mio Blog"
-  greeting="I'm Matteo Manchi aka Takeno,"
-  subtitle="and I'm a web fullstack engineer."
-  bio="I play with code since 2006, when I started to code in PHP."
-  currentTech="Now I'm a fullstack web engineer, with focus on the frontend."
-  recentPostsTitle="Ultimi post"
-  upcomingTalksTitle="Prossimi Talk"
-/>
+<Home title="Matteo Manchi aka Takeno" recentPostsTitle="Ultimi post">
+  <div class="mb-12">
+    <h1>
+      Code, sharing, fun
+      <!-- <small class="text-2xl md:text-4xl">{subtitle}</small> -->
+    </h1>
+    <p class="text-2xl">
+      Benvenuto! Sono Matteo aka Takeno e sono un fullstack engineer in continua sperimentazione.
+    </p>
+    <p>
+      Sono un eterno curioso e mi piace andare in profondità sulle tecnologie che utilizzo. In
+      questo piccolo spazio digitale condivido scoperte ed esperienze riguardo lo sviluppo web nella
+      pratica quotidiana, con attenzione all'approfondimento e alla divulgazione. L'obiettivo è di
+      tenere un archivio di conoscenza dove riverso le mie esperienze tecniche in tutti gli ambiti
+      dello sviluppo full stack.
+    </p>
+    <p>
+      Se ti capita di incrociarmi ad una conferenza, ad un meetup del
+      <a href="https://romajs.org" target="_blank" rel="noopener noreferrer">RomaJS</a>, o ad un
+      torneo di <em>Magic: The Gathering</em>, non esitare a fermarmi e scambiare quattro
+      chiacchiere!
+    </p>
+  </div>
+</Home>

@@ -1,16 +1,17 @@
 ---
+import '../styles/global.css';
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { SITE_DESCRIPTION } from '../consts';
 
 interface Props {
-  title?: string;
+  title: string;
   alternateUrls?: {
     [key: string]: string;
   };
 }
 
-const { title = SITE_TITLE, alternateUrls = {} } = Astro.props;
+const { title, alternateUrls = {} } = Astro.props;
 const currentLang = Astro.currentLocale || 'it';
 ---
 
@@ -24,10 +25,12 @@ const currentLang = Astro.currentLocale || 'it';
       ))
     }
   </head>
-  <body class="bg-gray-950 min-h-screen">
-    <Header />
-    <main>
-      <slot />
-    </main>
+  <body>
+    <div class="container box-content px-4 min-h-screen mx-auto bg-black/80">
+      <Header />
+      <main class="mt-12 md:px-[8.33333%]">
+        <slot />
+      </main>
+    </div>
   </body>
 </html>

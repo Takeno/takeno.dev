@@ -16,121 +16,119 @@ const events = (await getCollection('events')).sort(
 ---
 
 <Layout title={title}>
-  <div class="container mx-auto px-4 py-12">
-    <h1>{title}</h1>
-    <p class="text-xl">{description}</p>
+  <h1>{title}</h1>
+  <p class="text-xl">{description}</p>
 
-    <div class="overflow-x-auto">
-      <table class="w-full text-left">
-        <thead class="text-gray-400 uppercase text-sm">
-          <tr>
-            <th class="py-3 px-4">Evento</th>
-            <th class="py-3 px-4">Luogo</th>
-            <th class="py-3 px-4">Data</th>
-            <th class="py-3 px-4">Talk</th>
-          </tr>
-        </thead>
-        <tbody class="text-gray-300">
-          {
-            events.map((event) => (
-              <tr class="border-t border-gray-800">
-                <td class="py-4 px-4">
-                  {event.data.eventLink ? (
+  <div class="overflow-x-auto">
+    <table class="w-full text-left">
+      <thead class="text-gray-400 uppercase text-sm">
+        <tr>
+          <th class="py-3 px-4">Evento</th>
+          <th class="py-3 px-4">Luogo</th>
+          <th class="py-3 px-4">Data</th>
+          <th class="py-3 px-4">Talk</th>
+        </tr>
+      </thead>
+      <tbody class="text-gray-300">
+        {
+          events.map((event) => (
+            <tr class="border-t border-gray-800">
+              <td class="py-4 px-4">
+                {event.data.eventLink ? (
+                  <a
+                    href={event.data.eventLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-primary hover:text-primary-hover"
+                  >
+                    {event.data.event}
+                  </a>
+                ) : (
+                  event.data.event
+                )}
+              </td>
+              <td class="py-4 px-4">{event.data.location}</td>
+              <td class="py-4 px-4">
+                <FormattedDate date={event.data.date} />
+              </td>
+              <td class="py-4 px-4">
+                <div class="flex items-center gap-4">
+                  {event.data.speaker && event.data.talk}
+                  {event.data.video && (
                     <a
-                      href={event.data.eventLink}
+                      href={event.data.video}
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="text-primary hover:text-primary-hover"
+                      class="text-gray-400 hover:text-primary"
                     >
-                      {event.data.event}
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-5 h-5"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347c-.75.412-1.667-.13-1.667-.986V5.653Z"
+                        />
+                      </svg>
                     </a>
-                  ) : (
-                    event.data.event
                   )}
-                </td>
-                <td class="py-4 px-4">{event.data.location}</td>
-                <td class="py-4 px-4">
-                  <FormattedDate date={event.data.date} />
-                </td>
-                <td class="py-4 px-4">
-                  <div class="flex items-center gap-4">
-                    {event.data.speaker && event.data.talk}
-                    {event.data.video && (
-                      <a
-                        href={event.data.video}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="text-gray-400 hover:text-primary"
+                  {event.data.slides && (
+                    <a
+                      href={event.data.slides}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-gray-400 hover:text-primary"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-5 h-5"
                       >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke-width="1.5"
-                          stroke="currentColor"
-                          class="w-5 h-5"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347c-.75.412-1.667-.13-1.667-.986V5.653Z"
-                          />
-                        </svg>
-                      </a>
-                    )}
-                    {event.data.slides && (
-                      <a
-                        href={event.data.slides}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="text-gray-400 hover:text-primary"
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                        />
+                      </svg>
+                    </a>
+                  )}
+                  {event.data.repo && (
+                    <a
+                      href={event.data.repo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-gray-400 hover:text-primary"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-5 h-5"
                       >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke-width="1.5"
-                          stroke="currentColor"
-                          class="w-5 h-5"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                          />
-                        </svg>
-                      </a>
-                    )}
-                    {event.data.repo && (
-                      <a
-                        href={event.data.repo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="text-gray-400 hover:text-primary"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke-width="1.5"
-                          stroke="currentColor"
-                          class="w-5 h-5"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M14.25 9.75 16.5 12l-2.25 2.25m-4.5 0L7.5 12l2.25-2.25M6 20.25h12A2.25 2.25 0 0 0 20.25 18V6A2.25 2.25 0 0 0 18 3.75H6A2.25 2.25 0 0 0 3.75 6v12A2.25 2.25 0 0 0 6 20.25Z"
-                          />
-                        </svg>
-                      </a>
-                    )}
-                  </div>
-                </td>
-              </tr>
-            ))
-          }
-        </tbody>
-      </table>
-    </div>
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M14.25 9.75 16.5 12l-2.25 2.25m-4.5 0L7.5 12l2.25-2.25M6 20.25h12A2.25 2.25 0 0 0 20.25 18V6A2.25 2.25 0 0 0 18 3.75H6A2.25 2.25 0 0 0 3.75 6v12A2.25 2.25 0 0 0 6 20.25Z"
+                        />
+                      </svg>
+                    </a>
+                  )}
+                </div>
+              </td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
   </div>
 </Layout>
