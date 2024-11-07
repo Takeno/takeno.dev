@@ -4,6 +4,7 @@ import FormattedDate from '../FormattedDate.astro';
 import Layout from '../../layouts/Layout.astro';
 import TranslationInfo from '../TranslationInfo.astro';
 import { extractSlugFromPath } from '../../utils/contents';
+import { getRelativeLocaleUrl } from 'astro:i18n';
 
 interface Props {
   post: CollectionEntry<'blog'>;
@@ -12,21 +13,24 @@ interface Props {
 const { post } = Astro.props;
 let { Content } = await post.render();
 
-const alternateLang = await getEntry('blog', post.data.translationOf);
+const alternateLang = await getEntry(post.data.translationOf);
 
 if (alternateLang === undefined) {
   throw new Error('Translation not found');
 }
 
 const alternateUrls = {
-  [post.data.lang]: `/${post.data.lang}/blog/${extractSlugFromPath(post.slug)}/`,
+  [post.data.lang]: getRelativeLocaleUrl(
+    post.data.lang,
+    `/blog/${extractSlugFromPath(post.slug)}/`
+  ),
 };
 
 if (alternateLang.data.untranslated === false) {
-  alternateUrls[alternateLang.data.lang] =
-    alternateLang.data.lang === 'it'
-      ? `/blog/${extractSlugFromPath(alternateLang.slug)}/`
-      : `/${alternateLang.data.lang}/blog/${extractSlugFromPath(alternateLang.slug)}/`;
+  alternateUrls[alternateLang.data.lang] = getRelativeLocaleUrl(
+    alternateLang.data.lang,
+    `/blog/${extractSlugFromPath(alternateLang.slug)}/`
+  );
 }
 
 if (post.data.untranslated) {

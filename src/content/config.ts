@@ -1,5 +1,5 @@
 import { file } from 'astro/loaders';
-import { defineCollection, z } from 'astro:content';
+import { defineCollection, reference, z } from 'astro:content';
 
 const blog = defineCollection({
   type: 'content',
@@ -13,7 +13,7 @@ const blog = defineCollection({
     heroImage: z.string().optional(),
     lang: z.enum(['it', 'en']).default('it'),
     untranslated: z.boolean().default(false),
-    translationOf: z.string(), // ID del post originale
+    translationOf: reference('blog'),
   }),
 });
 
