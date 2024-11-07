@@ -22,25 +22,64 @@ const currentLang = Astro.currentLocale || 'it';
       </a>
     </div>
 
-    <div class="flex items-center gap-6">
-      <HeaderLink
-        href={getRelativeLocaleUrl(currentLang, '')}
-        class="text-gray-300 hover:text-primary">Home</HeaderLink
+    <!-- Burger menu button -->
+    <button id="burger-menu" class="md:hidden">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6 text-gray-300"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
       >
-      <!-- <HeaderLink
-        href={getRelativeLocaleUrl(currentLang, 'about-me')}
-        class="text-gray-300 hover:text-primary">About me</HeaderLink
-      > -->
-      <HeaderLink
-        href={getRelativeLocaleUrl(currentLang, 'events-and-talks')}
-        class="text-gray-300 hover:text-primary">Events & Talks</HeaderLink
-      >
-      <HeaderLink
-        href={getRelativeLocaleUrl(currentLang, 'blog')}
-        class="text-gray-300 hover:text-primary">Blog</HeaderLink
-      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
 
-      <div class="w-px h-6 bg-gray-700"></div>
+    <!-- Navigation menu -->
+    <div
+      id="nav-menu"
+      class="fixed inset-0 bg-gray-900 bg-opacity-95 md:bg-transparent md:static transform translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out flex flex-col md:flex-row items-center justify-center md:justify-end gap-6"
+    >
+      <!-- Close button for mobile -->
+      <button id="close-menu" class="absolute top-4 right-4 md:hidden text-gray-300">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+
+      <div class="flex flex-col md:flex-row items-center gap-6">
+        <HeaderLink
+          href={getRelativeLocaleUrl(currentLang, '')}
+          class="text-gray-300 hover:text-primary">Home</HeaderLink
+        >
+        <!-- <HeaderLink
+          href={getRelativeLocaleUrl(currentLang, 'about-me')}
+          class="text-gray-300 hover:text-primary">About me</HeaderLink> -->
+        <HeaderLink
+          href={getRelativeLocaleUrl(currentLang, 'events-and-talks')}
+          class="text-gray-300 hover:text-primary">Events & Talks</HeaderLink
+        >
+        <HeaderLink
+          href={getRelativeLocaleUrl(currentLang, 'blog')}
+          class="text-gray-300 hover:text-primary">Blog</HeaderLink
+        >
+      </div>
+
+      <div class="w-px h-6 bg-gray-700 hidden md:block"></div>
       {
         currentLang === 'it' ? (
           <HeaderLink
@@ -62,8 +101,21 @@ const currentLang = Astro.currentLocale || 'it';
   </nav>
 </header>
 
+<script>
+  const burgerMenu = document.getElementById('burger-menu');
+  const closeMenu = document.getElementById('close-menu');
+  const navMenu = document.getElementById('nav-menu');
+
+  burgerMenu?.addEventListener('click', () => {
+    navMenu?.classList.remove('translate-x-full');
+  });
+
+  closeMenu?.addEventListener('click', () => {
+    navMenu?.classList.add('translate-x-full');
+  });
+</script>
+
 <style>
-  /* Sovrascriviamo lo stile di HeaderLink per il tema scuro */
   :global(a.active) {
     @apply text-purple-400 font-bold;
   }

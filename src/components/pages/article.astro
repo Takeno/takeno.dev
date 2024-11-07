@@ -35,8 +35,8 @@ if (post.data.untranslated) {
 ---
 
 <Layout title={post.data.title} alternateUrls={alternateUrls}>
-  <article class="container mx-auto px-4 py-12">
-    <header class="max-w-3xl mx-auto mb-12">
+  <article class="max-w-3xl mx-auto px-4">
+    <header class="mb-8">
       <div class="text-gray-400 mb-4">
         <FormattedDate date={post.data.pubDate} />
       </div>
@@ -56,7 +56,7 @@ if (post.data.untranslated) {
       />
     </header>
 
-    <div class="prose prose-invert prose-lg max-w-3xl mx-auto">
+    <div class="prose prose-invert prose-lg">
       <Content />
     </div>
   </article>
