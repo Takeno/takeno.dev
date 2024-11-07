@@ -37,3 +37,16 @@ const { title, description, image = '/og-image.png' } = Astro.props;
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 {image && <meta property="twitter:image" content={new URL(image, Astro.url)} />}
+
+<!-- Umami Analytics -->
+{
+  import.meta.env.PROD && (
+    <script
+      is:inline
+      defer
+      async
+      src="https://cloud.umami.is/script.js"
+      data-website-id="0326f088-e035-47dd-9b5a-68f4a9e8acae"
+    />
+  )
+}
