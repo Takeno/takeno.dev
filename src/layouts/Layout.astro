@@ -2,23 +2,23 @@
 import '../styles/global.css';
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION } from '../consts';
 
 interface Props {
   title: string;
+  description?: string;
   alternateUrls?: {
     [key: string]: string;
   };
 }
 
-const { title, alternateUrls = {} } = Astro.props;
+const { title, description, alternateUrls = {} } = Astro.props;
 const currentLang = Astro.currentLocale || 'it';
 ---
 
 <!doctype html>
 <html lang={currentLang}>
   <head>
-    <BaseHead title={title} description={SITE_DESCRIPTION} />
+    <BaseHead title={title} description={description} />
     {
       Object.entries(alternateUrls).map(([lang, url]) => (
         <link rel="alternate" hreflang={lang} href={new URL(url, Astro.site).toString()} />

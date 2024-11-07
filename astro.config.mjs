@@ -9,7 +9,19 @@ import tailwind from '@astrojs/tailwind';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://takeno.dev',
-  integrations: [mdx(), sitemap(), tailwind()],
+  integrations: [
+    mdx(),
+    sitemap({
+      i18n: {
+        defaultLocale: 'it',
+        locales: {
+          en: 'en-US',
+          it: 'it-IT',
+        },
+      },
+    }),
+    tailwind(),
+  ],
   i18n: {
     locales: ['en', 'it'],
     defaultLocale: 'it',
