@@ -37,7 +37,7 @@ const posts = (await getCollection('blog'))
         <ul class="space-y-8">
           {
             posts.map((post) => (
-              <li class="relative grid grid-cols-[120px_1fr] gap-6 items-start">
+              <li class="grid grid-cols-[120px_1fr] gap-6 items-start">
                 <div class="text-sm">
                   <FormattedDate date={post.data.pubDate} />
                 </div>
