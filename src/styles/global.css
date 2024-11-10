@@ -7,6 +7,7 @@ body {
     sans-serif;
 
   background: linear-gradient(45deg, rgba(149, 27, 129, 1) 0%, rgba(0, 159, 227, 1) 100%);
+  background-attachment: fixed;
 }
 
 /* Intestazioni */
