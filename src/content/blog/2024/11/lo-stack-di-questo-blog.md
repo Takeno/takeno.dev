@@ -98,10 +98,10 @@ Finché si tratta di UI tutto abbastanza bene. Mi sono trovato un po' di classi 
 
 Lato logica applicativa ho fatto ben poco (fortunatamente, è un SSG), quindi non ho avuto ancora modo di testare errori logici. Però devo sostenere che la possibilità di agire su più file contemporaneamente gli da quella marcia in più totalmente diversa dal semplice autocomplete mentre uno scrive.
 
-Queste almeno la mia esperienza da senior engineer che utilizza questo tipo di strumenti per velocizzare le parti noiose, ma ha anche l'occhio critico di capire cosa ha scritto e nel caso di correggerlo in corsa. Nelle mani di sviluppatori meno esperti, il timore che diventi qualcosa che vada in produzione codice _non compreso_ mi lascia perplesso.
+Queste almeno la mia esperienza da senior engineer che utilizza questo tipo di strumenti per velocizzare le parti noiose, ma ha anche l'occhio critico di capire cosa ha scritto e nel caso di correggerlo in corsa. Nelle mani di sviluppatori meno esperti mi rimane il timore che diventi qualcosa che vada in produzione codice _non compreso_.
 
 Continuerò a provarlo su qualche side project per vedere come se la cava lui, ma soprattutto per vedere come aumenta la mia produttività. <br />
-E comunque, trovare il bug introdotto dall'IA e fixarlo è comunque un allentamento.
+E comunque, trovare il bug introdotto dall'IA e fixarlo è comunque un allenamento.
 
 # Design
 
