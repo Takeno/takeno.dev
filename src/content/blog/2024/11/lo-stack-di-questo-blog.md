@@ -90,7 +90,7 @@ _Ripescando i prompt scrivendo questo articolo, mi sono accorto che ad un certo 
 
 Quello che invece mi ha totalmente sbagliato è stata la configurazione di eslint/prettier. Ha mischiato le configurazioni di versioni differenti, per nulla recenti, e dopo 20 minuti passati provando a sistemarle ho fatto prima ad eliminare tutto e rifarla da zero a mano.
 
-### Considerazioni finali su Curosor
+### Considerazioni finali su Cursor
 
 Se sono online con questo blog, devo ringraziare Cursor e claude-3.5-sonnet per aver fatto la parte di manovalanza che mi annoia.
 
