@@ -26,4 +26,7 @@ export default defineConfig({
     locales: ['en', 'it'],
     defaultLocale: 'it',
   },
+  experimental: {
+    contentLayer: true,
+  },
 });

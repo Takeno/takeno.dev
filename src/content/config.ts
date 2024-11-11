@@ -18,8 +18,8 @@ const blog = defineCollection({
 });
 
 const events = defineCollection({
-  loader: file('src/content/events/data.json', { parser: (text) => JSON.parse(text) }),
-
+  type: 'content_layer',
+  loader: file('src/data/events.json'),
   schema: z.object({
     event: z.string(),
     location: z.string(),
