@@ -13,7 +13,7 @@ interface Props {
 const { post } = Astro.props;
 let { Content } = await post.render();
 
-const alternateLang = await getEntry(post.data.translationOf);
+const alternateLang = post.data.translationOf ? await getEntry(post.data.translationOf) : undefined;
 
 if (alternateLang === undefined) {
   throw new Error('Translation not found');
