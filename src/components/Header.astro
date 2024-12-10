@@ -23,7 +23,7 @@ const currentLang = Astro.currentLocale || 'it';
     </div>
 
     <!-- Burger menu button -->
-    <button id="burger-menu" class="md:hidden">
+    <button id="burger-menu" class="md:hidden" aria-label="Menu">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-6 w-6 text-gray-300"
@@ -45,7 +45,11 @@ const currentLang = Astro.currentLocale || 'it';
       class="fixed z-50 inset-0 bg-gray-900 bg-opacity-95 md:bg-transparent md:static transform translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out flex flex-col md:flex-row items-center justify-center md:justify-end gap-6"
     >
       <!-- Close button for mobile -->
-      <button id="close-menu" class="absolute top-4 right-4 md:hidden text-gray-300">
+      <button
+        id="close-menu"
+        class="absolute top-4 right-4 md:hidden text-gray-300"
+        aria-label="Close menu"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           class="h-6 w-6"
