@@ -27,7 +27,8 @@
     "location": "Milano, IT",
     "date": "2024-10-22",
     "speaker": true,
-    "talk": "What's wrong with modern fullstack frameworks"
+    "talk": "What's wrong with modern fullstack frameworks",
+    "video": "https://www.youtube.com/watch?v=XRmU_V85yk4"
   },
   {
     "id": "reactjs-day-2024",
